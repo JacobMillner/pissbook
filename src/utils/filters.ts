@@ -17,5 +17,6 @@ export function filterByRange(entries: Entry[], range: TimeRange): Entry[] {
 /** Fields that are numeric and suitable for charting */
 export const CHARTABLE_FIELDS: (keyof Entry)[] = [
   'ph', 'specificGravity', 'zinc', 'magnesium', 'ascorbate', 'uricAcid',
-  'urobilinogen', 'salinity',
+  'urobilinogen', 'salinity', 'bilirubin', 'ketone', 'protein', 'nitrite',
+  'leukocytes', 'hydration',
 ]
