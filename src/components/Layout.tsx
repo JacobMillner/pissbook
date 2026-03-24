@@ -38,6 +38,7 @@ export default function Layout({ children }: LayoutProps) {
           {[
             { to: '/data',    label: 'View Data' },
             { to: '/trends',  label: 'Trends' },
+            { to: '/test',    label: 'Test' },
           ].map(({ to, label }) => (
             <NavLink
               key={to}

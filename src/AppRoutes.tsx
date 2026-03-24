@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import NewEntryPage from './pages/NewEntryPage'
 import ViewDataPage from './pages/ViewDataPage'
 import TrendsPage from './pages/TrendsPage'
+import TestPage from './pages/TestPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 export default function AppRoutes() {
@@ -10,6 +11,7 @@ export default function AppRoutes() {
       <Route path="/" element={<NewEntryPage />} />
       <Route path="/data" element={<ViewDataPage />} />
       <Route path="/trends" element={<TrendsPage />} />
+      <Route path="/test" element={<TestPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
