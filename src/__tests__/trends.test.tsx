@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import TrendsPage from '../pages/TrendsPage'
 import { saveEntry, clearEntries } from '../utils/storage'
+import { EntriesProvider } from '../hooks/useEntries'
 import type { Entry } from '../types'
 
 function makeEntry(overrides: Partial<Entry> = {}, daysAgo = 0): Entry {
@@ -32,7 +33,13 @@ function makeEntry(overrides: Partial<Entry> = {}, daysAgo = 0): Entry {
 }
 
 function renderPage() {
-  return render(<MemoryRouter><TrendsPage /></MemoryRouter>)
+  return render(
+    <MemoryRouter>
+      <EntriesProvider>
+        <TrendsPage />
+      </EntriesProvider>
+    </MemoryRouter>
+  )
 }
 
 describe('TrendsPage', () => {

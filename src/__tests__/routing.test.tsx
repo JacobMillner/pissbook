@@ -2,12 +2,15 @@ import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import AppRoutes from '../AppRoutes'
+import { EntriesProvider } from '../hooks/useEntries'
 
 describe('App routing', () => {
   it('renders New Entry page at /', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
-        <AppRoutes />
+        <EntriesProvider>
+          <AppRoutes />
+        </EntriesProvider>
       </MemoryRouter>
     )
     expect(screen.getByTestId('page-new-entry')).toBeInTheDocument()
@@ -16,7 +19,9 @@ describe('App routing', () => {
   it('renders View Data page at /data', () => {
     render(
       <MemoryRouter initialEntries={['/data']}>
-        <AppRoutes />
+        <EntriesProvider>
+          <AppRoutes />
+        </EntriesProvider>
       </MemoryRouter>
     )
     expect(screen.getByTestId('page-view-data')).toBeInTheDocument()
@@ -25,7 +30,9 @@ describe('App routing', () => {
   it('renders Trends page at /trends', () => {
     render(
       <MemoryRouter initialEntries={['/trends']}>
-        <AppRoutes />
+        <EntriesProvider>
+          <AppRoutes />
+        </EntriesProvider>
       </MemoryRouter>
     )
     expect(screen.getByTestId('page-trends')).toBeInTheDocument()
@@ -34,7 +41,9 @@ describe('App routing', () => {
   it('renders 404 fallback for unknown routes', () => {
     render(
       <MemoryRouter initialEntries={['/unknown-route']}>
-        <AppRoutes />
+        <EntriesProvider>
+          <AppRoutes />
+        </EntriesProvider>
       </MemoryRouter>
     )
     expect(screen.getByTestId('page-not-found')).toBeInTheDocument()

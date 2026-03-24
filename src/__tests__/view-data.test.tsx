@@ -3,6 +3,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import ViewDataPage from '../pages/ViewDataPage'
 import { saveEntry, clearEntries } from '../utils/storage'
+import { EntriesProvider } from '../hooks/useEntries'
 import type { Entry } from '../types'
 
 const baseEntry: Entry = {
@@ -27,7 +28,13 @@ const baseEntry: Entry = {
 }
 
 function renderPage() {
-  return render(<MemoryRouter><ViewDataPage /></MemoryRouter>)
+  return render(
+    <MemoryRouter>
+      <EntriesProvider>
+        <ViewDataPage />
+      </EntriesProvider>
+    </MemoryRouter>
+  )
 }
 
 describe('ViewDataPage', () => {

@@ -4,11 +4,14 @@ import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import NewEntryPage from '../pages/NewEntryPage'
 import { loadEntries, clearEntries } from '../utils/storage'
+import { EntriesProvider } from '../hooks/useEntries'
 
 function renderPage() {
   return render(
     <MemoryRouter>
-      <NewEntryPage />
+      <EntriesProvider>
+        <NewEntryPage />
+      </EntriesProvider>
     </MemoryRouter>
   )
 }

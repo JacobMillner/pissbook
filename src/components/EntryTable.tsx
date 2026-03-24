@@ -6,9 +6,29 @@ interface Props {
 }
 
 const VISIBLE_FIELDS: (keyof Entry)[] = [
-  'timestamp', 'hydration', 'ph', 'specificGravity', 'ketone',
-  'protein', 'nitrite', 'leukocytes', 'uricAcid'
+  'timestamp', 'hydration', 'urobilinogen', 'bilirubin', 'ketone',
+  'zinc', 'magnesium', 'protein', 'salinity', 'nitrite',
+  'leukocytes', 'freeRadical', 'specificGravity', 'ph', 'ascorbate', 'uricAcid'
 ]
+
+const FIELD_LABELS: Record<string, string> = {
+  timestamp: 'Date',
+  hydration: 'Hydration',
+  urobilinogen: 'Urobilinogen',
+  bilirubin: 'Bilirubin',
+  ketone: 'Ketone',
+  zinc: 'Zinc',
+  magnesium: 'Magnesium',
+  protein: 'Protein',
+  salinity: 'Salinity',
+  nitrite: 'Nitrite',
+  leukocytes: 'Leukocytes',
+  freeRadical: 'Free Radical',
+  specificGravity: 'Spec Gravity',
+  ph: 'pH',
+  ascorbate: 'Ascorbate',
+  uricAcid: 'Uric Acid',
+}
 
 export default function EntryTable({ entries, onDelete }: Props) {
   if (entries.length === 0) {
@@ -26,7 +46,7 @@ export default function EntryTable({ entries, onDelete }: Props) {
           <tr style={{ background: 'var(--fb-bg)', borderBottom: '2px solid var(--fb-border)' }}>
             {VISIBLE_FIELDS.map(f => (
               <th key={f} style={{ padding: '6px 8px', textAlign: 'left', fontWeight: 700 }}>
-                {f === 'timestamp' ? 'Date' : f}
+                {FIELD_LABELS[f]}
               </th>
             ))}
             <th style={{ padding: '6px 8px' }}>Del</th>

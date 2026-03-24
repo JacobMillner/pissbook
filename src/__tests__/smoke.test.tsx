@@ -4,11 +4,14 @@ import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import AppRoutes from '../AppRoutes'
 import { loadEntries, clearEntries } from '../utils/storage'
+import { EntriesProvider } from '../hooks/useEntries'
 
 function renderRoutes(path = '/') {
   return render(
     <MemoryRouter initialEntries={[path]}>
-      <AppRoutes />
+      <EntriesProvider>
+        <AppRoutes />
+      </EntriesProvider>
     </MemoryRouter>
   )
 }

@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { DEFAULT_ENTRY } from '../types'
-import { saveEntry, generateId } from '../utils/storage'
+import { generateId } from '../utils/storage'
+import { useEntries } from './useEntries'
 import type { Entry } from '../types'
 
 type FormState = Omit<Entry, 'id' | 'timestamp'>
 
 export function useEntryForm() {
+  const { saveEntry } = useEntries()
   const [form, setForm] = useState<FormState>(DEFAULT_ENTRY)
   const [submitted, setSubmitted] = useState(false)
 

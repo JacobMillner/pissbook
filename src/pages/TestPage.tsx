@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { generateId, saveEntry, clearEntries } from '../utils/storage'
+import { generateId } from '../utils/storage'
+import { useEntries } from '../hooks/useEntries'
 import type { Entry } from '../types'
 
 const HYDRATION_VALUES = ['over_hydrated', 'optimal', 'under_hydrated', 'severely_dehydrated'] as const
@@ -46,26 +47,28 @@ function generateTestEntry(date: Date): Entry {
 }
 
 export default function TestPage() {
+  const { saveEntry, clearAll, entries } = useEntries()
   const [count, setCount] = useState(0)
 
   const populateData = () => {
     const now = new Date()
-    const entries: Entry[] = []
+    const newEntries: Entry[] = []
     for (let month = 0; month < 5; month++) {
       const targetMonth = new Date(now.getFullYear(), now.getMonth() - month, 1)
       for (let day = 0; day < 28; day++) {
         const date = new Date(targetMonth)
         date.setDate(day + 1)
         date.setHours(8 + Math.floor(Math.random() * 12), Math.floor(Math.random() * 60))
-        entries.push(generateTestEntry(date))
+        const entry = generateTestEntry(date)
+        saveEntry(entry)
+        newEntries.push(entry)
       }
     }
-    entries.forEach(e => saveEntry(e))
-    setCount(entries.length)
+    setCount(entries.length + newEntries.length)
   }
 
   const deleteAllData = () => {
-    clearEntries()
+    clearAll()
     setCount(0)
   }
 
