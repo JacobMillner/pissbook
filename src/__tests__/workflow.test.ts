@@ -10,10 +10,10 @@ describe('GitHub Actions workflow', () => {
     expect(existsSync(workflowPath)).toBe(true)
   })
 
-  it('workflow triggers on push to main', () => {
+  it('workflow triggers on push to trunk', () => {
     const content = readFileSync(workflowPath, 'utf-8')
     const doc = parseYaml(content)
-    expect(doc.on?.push?.branches).toContain('main')
+    expect(doc.on?.push?.branches).toContain('trunk')
   })
 
   it('workflow has a test job', () => {
