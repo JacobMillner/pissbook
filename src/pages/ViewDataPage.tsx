@@ -17,7 +17,11 @@ export default function ViewDataPage() {
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
           <h2 style={{ fontFamily: 'var(--font-brand)', fontSize: '20px', color: 'var(--fb-blue)' }}>
-            Your Results
+            Your Entries{entries.length > 0 && (
+              <span style={{ fontSize: '13px', fontWeight: 400, color: 'var(--fb-text-light)', marginLeft: '8px' }}>
+                ({entries.length})
+              </span>
+            )}
           </h2>
           <button
             className="btn btn-secondary"
