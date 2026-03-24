@@ -1,3 +1,9 @@
+import Layout from '../components/Layout'
+
 export default function TrendsPage() {
-  return <div data-testid="page-trends"><h1>Trends</h1></div>
+  return (
+    <Layout>
+      <div data-testid="page-trends"><h1>Trends</h1></div>
+    </Layout>
+  )
 }
