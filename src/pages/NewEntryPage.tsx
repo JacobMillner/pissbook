@@ -16,7 +16,7 @@ export default function NewEntryPage() {
       <div data-testid="page-new-entry">
         <div className="panel" style={{ marginBottom: '16px' }}>
           <h2 style={{ fontFamily: 'var(--font-brand)', fontSize: '20px', color: 'var(--fb-blue)', marginBottom: '4px' }}>
-            New Pee Strip Entry
+            New Piss
           </h2>
           <p style={{ color: 'var(--fb-text-light)', fontSize: '12px' }}>
             Record your test strip readings. All data is saved to this device only.
